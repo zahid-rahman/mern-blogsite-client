@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Container, Image, Row, Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { saveUserDetailsAfterLogin } from '../../actions'
 import { getUserDetails } from '../../utils/loginSession'
 import profileImages from './../../images/profile_images.jpeg'
