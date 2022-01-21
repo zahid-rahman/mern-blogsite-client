@@ -16,13 +16,11 @@ const AdminDashboard = () => {
                             </Card.Header>
                             <Card.Body>
                                 <Row>
-                                    <CardContent title="total user" content={demoCardContent} />
-                                    <CardContent title="total user" content={demoCardContent} />
-                                    <CardContent title="total user" content={demoCardContent} />
+                                    <CardContent title="total user(active)" content={demoCardContent} />
+                                    <CardContent title="total user(inactive)" content={demoCardContent} />
+                                    <CardContent title="total post(active)" content={demoCardContent} />
 
-                                    <CardContent title="total user" content={demoCardContent} />
-                                    <CardContent title="total user" content={demoCardContent} />
-                                    <CardContent title="total user" content={demoCardContent} />
+                                    <CardContent title="total post(pending)" content={demoCardContent} />
 
                                 </Row>
                             </Card.Body>
