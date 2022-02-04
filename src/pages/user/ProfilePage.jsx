@@ -26,8 +26,6 @@ const ProfilePage = () => {
         )
     }
 
-    console.log('hello')
-
     const profilePageContent = () => {
         return (
             <Container className="p-2">
