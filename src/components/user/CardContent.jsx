@@ -3,9 +3,9 @@ import { Col, Card } from 'react-bootstrap'
 
 const CardContent = ({ title, content }) => {
     return (
-        <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+        <Col xl={6} lg={6} md={6} sm={12} xs={12}>
             <Card
-                style={{ width: '18rem' }}
+                style={{ width: '100%' }}
                 className="card bg-dark mb-2 text-white"
             >
                 <Card.Body>
