@@ -1,10 +1,10 @@
-import cookie from 'js-cookie'
-import decode from 'jwt-decode'
+import cookie from 'js-cookie';
+import decode from 'jwt-decode';
 
-const { REACT_APP_COOKIE_STRING } = process.env
+const { REACT_APP_COOKIE_STRING } = process.env;
 
 export const setCookie = (token) => {
-    cookie.set(REACT_APP_COOKIE_STRING, token)
+    cookie.set(REACT_APP_COOKIE_STRING, token);
 }
 
 export const getCookie = () => {
@@ -12,13 +12,13 @@ export const getCookie = () => {
 }
 
 export const removeCookie = () => {
-    cookie.remove(REACT_APP_COOKIE_STRING)
+    cookie.remove(REACT_APP_COOKIE_STRING);
 }
 
 export const getToken = () => {
     if(getCookie()) {
         const data = JSON.parse(getCookie());
-        const token = data.accessToken;
+        const token = data.accessTokenWithBearer;
         return token;
     }
 }

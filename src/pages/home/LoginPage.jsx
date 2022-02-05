@@ -91,11 +91,11 @@ const LoginPage = () => {
                             <Link to='/signup' className="btn btn-link">Not registered yet</Link>
                         </Form.Group>
                         <Button variant="primary" type="submit" className="w-100" onClick={showAlert}>
-                            Sign Up
+                            Log in
                         </Button>
                     </Form>
                     <br />
-                    {statusCode === 401 ?
+                    {statusCode === 500 ?
                         <Alert variant="danger" show={alertVisible} className="text-center p-3"><b>wrong email and password</b></Alert>
                         : ""
                     }
