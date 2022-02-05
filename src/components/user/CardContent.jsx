@@ -11,7 +11,7 @@ const CardContent = ({ title, content }) => {
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>
-                        {content()}
+                        <b>{content}</b>
                     </Card.Text>
                 </Card.Body>
             </Card>
