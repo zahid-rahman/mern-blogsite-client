@@ -1,7 +1,9 @@
 import React from 'react'
 import { Col, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import './CardContent.css'
 
-const CardContent = ({ title, content }) => {
+const CardContent = ({ title, content, link }) => {
     return (
         <Col xl={6} lg={6} md={6} sm={12} xs={12}>
             <Card
@@ -11,7 +13,7 @@ const CardContent = ({ title, content }) => {
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>
-                        <b>{content}</b>
+                        <Link to='/' className="content-design">{content}</Link>
                     </Card.Text>
                 </Card.Body>
             </Card>

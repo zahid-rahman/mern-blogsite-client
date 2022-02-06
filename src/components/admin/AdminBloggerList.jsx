@@ -1,16 +1,82 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import DataTable from 'react-data-table-component';
+import axios from 'axios';
 import AdminDashboardLayout from '../layout/AdminDashboardLayout';
+import { getToken } from '../../utils/loginSession';
+const API_SERVER_URL = process.env.REACT_APP_SERVER_API;
 
 const AdminBloggerList = () => {
+    const [ data, setData ] = useState([]);
+    const [pending, setPending] = useState(true);
+    const columns = [
+        {
+            name: 'Email Address',
+            selector: row => row.email,
+            sortable: true,
+        },
+        {
+            name: 'Username',
+            selector: row => row.username,
+            sortable: true,
+        },
+        {
+            name: 'NID',
+            selector: row => row.nid,
+            sortable: true,
+        },
+        {
+            name: 'Status',
+            selector: (row) => {
+                if(row.status == 'inactive')
+                    return <small className="badge bg-danger">inactive</small>
+                else
+                    return <small className="badge bg-success">active</small>
+ 
+            },
+            sortable: true,
+        },
+        {
+            name: 'Action',
+            selector: () => {
+                return (
+                    <div>
+                        <a className="btn btn-primary" href="#">edit</a>
+                        <a className="btn btn-danger m-2" href="#">Delete</a>
+                    </div>
+                )
+            },
+            sortable: false
+        }
+        
+    ];
+
+    const getPhotos = async () => {
+        const response = await axios({
+            method: 'GET',
+            url: `${API_SERVER_URL}/user/list`,
+            headers:{
+                Authorization: getToken().toString()
+            }
+        });
+
+        console.log(response.data);
+        setData(response.data)
+    }
+
+    useEffect(() => {
+        getPhotos();
+        setPending(false)
+    }, [])
+
     const adminBloggerListPageContent = () => {
         return (
             <div>
-                <h1>Admin Blogger List</h1>
+                <DataTable title="Blogger List" columns={columns} data={data} pagination progressPending={pending} highlightOnHover pointerOnHover/>
             </div>
         )
     }
     return (
-        <AdminDashboardLayout pageContent={adminBloggerListPageContent}/>
+        <AdminDashboardLayout pageContent={adminBloggerListPageContent} />
     );
 };
 
