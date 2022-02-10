@@ -46,7 +46,7 @@ const AdminAllPosts = () => {
 
     ];
 
-    const getPhotos = async () => {
+    const getAllPosts = async () => {
         const response = await axios({
             method: 'GET',
             url: `${API_SERVER_URL}/post/allPosts`,
@@ -59,7 +59,7 @@ const AdminAllPosts = () => {
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            getPhotos();
+            getAllPosts();
             setPending(false);
         }, 1000);
         return () => clearTimeout(timeout);

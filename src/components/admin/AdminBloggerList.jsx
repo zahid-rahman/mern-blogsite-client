@@ -50,7 +50,7 @@ const AdminBloggerList = () => {
         
     ];
 
-    const getPhotos = async () => {
+    const getBloggerList = async () => {
         const response = await axios({
             method: 'GET',
             url: `${API_SERVER_URL}/user/list`,
@@ -63,7 +63,7 @@ const AdminBloggerList = () => {
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            getPhotos();
+            getBloggerList();
             setPending(false);
         }, 1000);
         return () => clearTimeout(timeout);
