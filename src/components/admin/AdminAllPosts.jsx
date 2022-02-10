@@ -54,20 +54,21 @@ const AdminAllPosts = () => {
                 Authorization: getToken().toString()
             }
         });
-
-        console.log(response.data);
         setData(response.data)
     }
 
     useEffect(() => {
-        getPhotos();
-        setPending(false)
+        const timeout = setTimeout(() => {
+            getPhotos();
+            setPending(false);
+        }, 1000);
+        return () => clearTimeout(timeout);
     }, []);
 
     const adminAllPostPageContent = () => {
         return (
             <div>
-                <DataTable title="All Posts" columns={columns} data={data} pagination progressPending={pending} highlightOnHover pointerOnHover />
+                <DataTable title="All Posts" columns={columns} data={data} pagination progressPending={pending} highlightOnHover pointerOnHover fixedHeader fixedHeaderScrollHeight='700px'/>
             </div>
         )
     }

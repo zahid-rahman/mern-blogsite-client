@@ -58,14 +58,15 @@ const AdminBloggerList = () => {
                 Authorization: getToken().toString()
             }
         });
-
-        console.log(response.data);
         setData(response.data)
     }
 
     useEffect(() => {
-        getPhotos();
-        setPending(false)
+        const timeout = setTimeout(() => {
+            getPhotos();
+            setPending(false);
+        }, 1000);
+        return () => clearTimeout(timeout);
     }, [])
 
     const adminBloggerListPageContent = () => {
