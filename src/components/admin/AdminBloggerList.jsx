@@ -1,13 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import DataTable from 'react-data-table-component';
-import axios from 'axios';
+import React from 'react';
 import AdminDashboardLayout from '../layout/AdminDashboardLayout';
-import { getToken } from '../../utils/loginSession';
-const API_SERVER_URL = process.env.REACT_APP_SERVER_API;
+import CustomDataTable from '../dataTable/CustomDataTable';
 
 const AdminBloggerList = () => {
-    const [ data, setData ] = useState([]);
-    const [pending, setPending] = useState(true);
     const columns = [
         {
             name: 'Email Address',
@@ -50,32 +45,15 @@ const AdminBloggerList = () => {
         
     ];
 
-    const getBloggerList = async () => {
-        const response = await axios({
-            method: 'GET',
-            url: `${API_SERVER_URL}/user/list`,
-            headers:{
-                Authorization: getToken().toString()
-            }
-        });
-        setData(response.data)
-    }
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            getBloggerList();
-            setPending(false);
-        }, 1000);
-        return () => clearTimeout(timeout);
-    }, [])
-
     const adminBloggerListPageContent = () => {
+        const apiRequestInfo = {};
+        apiRequestInfo['method'] = 'get';
+        apiRequestInfo['url'] = `/user/list`;
         return (
-            <div>
-                <DataTable title="Blogger List" columns={columns} data={data} pagination progressPending={pending} highlightOnHover pointerOnHover/>
-            </div>
+            <CustomDataTable title="Blogger List" columns={columns} apiRequestInfo={apiRequestInfo}/>
         )
     }
+
     return (
         <AdminDashboardLayout pageContent={adminBloggerListPageContent} />
     );

@@ -1,13 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import DataTable from 'react-data-table-component';
+import React from 'react';
 import AdminDashboardLayout from '../layout/AdminDashboardLayout';
-import { getToken } from '../../utils/loginSession';
-const API_SERVER_URL = process.env.REACT_APP_SERVER_API;
+import CustomDataTable from '../dataTable/CustomDataTable';
 
 const AdminAllPosts = () => {
-    const [data, setData] = useState([]);
-    const [pending, setPending] = useState(true);
     const columns = [
         {
             name: 'Title',
@@ -43,33 +38,14 @@ const AdminAllPosts = () => {
             },
             sortable: false
         }
-
     ];
 
-    const getAllPosts = async () => {
-        const response = await axios({
-            method: 'GET',
-            url: `${API_SERVER_URL}/post/allPosts`,
-            headers: {
-                Authorization: getToken().toString()
-            }
-        });
-        setData(response.data)
-    }
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            getAllPosts();
-            setPending(false);
-        }, 1000);
-        return () => clearTimeout(timeout);
-    }, []);
-
     const adminAllPostPageContent = () => {
+        const apiRequestInfo = {};
+        apiRequestInfo['method'] = 'get';
+        apiRequestInfo['url'] = `/post/allPosts`;
         return (
-            <div>
-                <DataTable title="All Posts" columns={columns} data={data} pagination progressPending={pending} highlightOnHover pointerOnHover fixedHeader fixedHeaderScrollHeight='700px'/>
-            </div>
+            <CustomDataTable apiRequestInfo={apiRequestInfo} columns={columns} title="All Posts" />
         )
     }
     return (
