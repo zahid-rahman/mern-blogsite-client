@@ -8,11 +8,11 @@
         "link" : "/admin/profile"
     },
     {
-        "linkTitle": "View Blogger",
-        "link" : "/post/create"
+        "linkTitle": "View Bloggers",
+        "link" : "/admin/bloggerList"
     },
     {
         "linkTitle": "View Posts",
-        "link" : "/post/myPost"
+        "link" : "/admin/allPosts"
     }
 ]
