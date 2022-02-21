@@ -13,7 +13,7 @@ const CardContent = ({ title, content, link }) => {
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>
-                        <Link to='/' className="content-design">{content}</Link>
+                        {content != 0 ? <Link to={link} className="content-design">{content}</Link> : <span className="content-design">0</span>}
                     </Card.Text>
                 </Card.Body>
             </Card>

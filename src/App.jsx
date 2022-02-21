@@ -24,6 +24,8 @@ import NotAllowed from './components/custom-routes/NotAllowed'
 import NotFound from './components/custom-routes/404NotFound'
 import AdminBloggerListPage from './pages/admin/AdminBloggerListPage'
 import AdminAllPostPage from './pages/admin/AdminAllPostPage'
+import AdminTotalPostListPage from './pages/admin/AdminTotalPostListPage'
+import AdminTotalUserListPage from './pages/admin/AdminTotalUserListPage'
 
 const App = () => {
 
@@ -72,6 +74,8 @@ const App = () => {
           <AdminPrivateRoute path="/admin/bloggerList" exact component={AdminBloggerListPage} />
 
           <AdminPrivateRoute path="/admin/allPosts" exact component={AdminAllPostPage} />
+          <AdminPrivateRoute path="/admin/totalPostList" exact component={AdminTotalPostListPage} />
+          <AdminPrivateRoute path="/admin/totalUserList" exact component={AdminTotalUserListPage} />
 
           <Route path="/unauthorize" exact component={NotAllowed} />
           <Route path="*" component={NotFound} />

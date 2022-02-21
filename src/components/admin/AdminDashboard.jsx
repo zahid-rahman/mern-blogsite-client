@@ -104,11 +104,11 @@ const AdminDashboard = () => {
                             </Card.Header>
                             <Card.Body>
                                 <Row>
-                                    <CardContent title="total user(active)" content={userRelatedCounts.activeUserCount} />
-                                    <CardContent title="total user(inactive)" content={userRelatedCounts.inactiveUserCount} />
-                                    <CardContent title="total post(active)" content={postRelatedCounts.activePostCount} />
+                                    <CardContent title="total user(active)" content={userRelatedCounts.activeUserCount} link="/admin/totalUserList" />
+                                    <CardContent title="total user(inactive)" content={userRelatedCounts.inactiveUserCount} link="/admin/totalUserList"/>
+                                    <CardContent title="total post(active)" content={postRelatedCounts.activePostCount} link="/admin/totalPostList"/>
 
-                                    <CardContent title="total post(pending)" content={postRelatedCounts.pendingPostCount} />
+                                    <CardContent title="total post(pending)" content={postRelatedCounts.pendingPostCount} link="/admin/totalPostList"/>
 
                                 </Row>
                             </Card.Body>
